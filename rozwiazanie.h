@@ -6,14 +6,16 @@
 #define SPD2_ROZWIAZANIE_H
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <algorithm>
 
 
 class zadanie{
 private:
     int Pj;
 public:
-    zadanie(int Pj);
-    int getPj();
+    zadanie(int czasP):Pj(czasP){};
+    const int getPj()const{return Pj;};
 
     bool operator==(const zadanie &z) const {
         return (Pj == z.Pj);
@@ -31,13 +33,16 @@ class maszyna{
 private:
     std::vector<zadanie> zadaniaWMaszynie;
     int ID; //od 0
+    int sumaCzasuZadan=0;
 public:
-    maszyna(int ID);
+    int getSumaCzasuZadan(){return sumaCzasuZadan;};
+    maszyna(int id):ID(id){};
     int getID();
     std::vector<zadanie> getZadaniaWMaszynie();
     const bool isEmpty() { return zadaniaWMaszynie.empty(); };
-    void dodajZadanie(zadanie zad);
-    void usunZadanie(int ID);
+    void dodajZadanie(zadanie zad){zadaniaWMaszynie.push_back(zad);
+                                    sumaCzasuZadan+=zad.getPj();};
+    void usunZadanie(int ID){zadaniaWMaszynie.erase(zadaniaWMaszynie.begin() + ID);};
 
 
 
@@ -52,7 +57,7 @@ class problem{
     int liczbaZadan;
     int liczbaMaszyn;
 public:
-
+    problem(std::vector<zadanie> zWP, int lM );
     const std::vector<zadanie> getProblem() { return zadaniaWProblemie; };
     const int getLiczbaZadan(){ return zadaniaWProblemie.size(); };
     const bool isEmpty(){ return zadaniaWProblemie.empty() or maszyny.empty(); };//czy vector niepusty
@@ -67,23 +72,24 @@ public:
     void setPoczatkowaLiczbaZadan(int lZadan){liczbaZadan = lZadan;};
     const int getPoczatkowaLiczbaZadan(){ return liczbaZadan; };
 
-
+    void sort_pj();
 
 };
 
 class rozwiazanie{
 private:
-    std::vector<maszyna> masz;
+//    std::vector<maszyna> wektor_Maszyn;
     std::vector<std::vector<int>> rozw;
     int kryterium;
+    problem P;
 public:
-
+    rozwiazanie(problem p):P(p){};
     int getKryterium(){return kryterium;};
     void setKryterium(int kryt){kryterium = kryt;};
     int countCzasWykonania(std::vector<maszyna> m);  //porownuje maszyny mozna to rozdzielic na 2 funkcje
     void addToKryterium(int czas){kryterium += czas;}
     void addIxZadania(int IDMaszyny, int IDZadania) { rozw.push_back({IDMaszyny, IDZadania}); };
-
+    int getIDWolnejMaszyny();
     void algorytmLSA();
     void algorytmLPT();
 
