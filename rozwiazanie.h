@@ -20,10 +20,6 @@ public:
     bool operator==(const zadanie &z) const {
         return (Pj == z.Pj);
     }
-
-
-
-
 };
 
 
@@ -43,10 +39,6 @@ public:
     void dodajZadanie(zadanie zad){zadaniaWMaszynie.push_back(zad);
                                     sumaCzasuZadan+=zad.getPj();};
     void usunZadanie(int ID){zadaniaWMaszynie.erase(zadaniaWMaszynie.begin() + ID);};
-
-
-
-
 };
 
 
@@ -73,7 +65,6 @@ public:
     const int getPoczatkowaLiczbaZadan(){ return liczbaZadan; };
 
     void sort_pj();
-
 };
 
 class rozwiazanie{
@@ -90,6 +81,7 @@ public:
     void addToKryterium(int czas){kryterium += czas;}
     void addIxZadania(int IDMaszyny, int IDZadania) { rozw.push_back({IDMaszyny, IDZadania}); };
     int getIDWolnejMaszyny();
+    
     void algorytmLSA();
     void algorytmLPT();
 

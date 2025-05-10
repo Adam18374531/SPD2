@@ -8,8 +8,6 @@ problem::problem(std::vector<zadanie> zWP, int lM ):zadaniaWProblemie(zWP), licz
         maszyny.push_back(m);
     }
     liczbaZadan = zadaniaWProblemie.size();
-
-
 };
 
 
@@ -20,15 +18,14 @@ void problem::sort_pj() {
     });
 }
 
-
+// dla kazdej maszyny policz czas wykonywania i zwroc najwiekszy
 int rozwiazanie::countCzasWykonania(std::vector<maszyna> m){
-//    dla kazdej maszyny policz czas wykonywania i zwroc najwiekszy
     kryterium=0;
 
     for(int l=0; l<m.size();l++)
     {
-//        policz czas wykonywania
-        if(kryterium<m.at(l).getSumaCzasuZadan())
+        // policz czas wykonywania
+        if(kryterium < m.at(l).getSumaCzasuZadan())
             kryterium = m.at(l).getSumaCzasuZadan();
 
     }
@@ -37,7 +34,6 @@ int rozwiazanie::countCzasWykonania(std::vector<maszyna> m){
 }
 
 int rozwiazanie::getIDWolnejMaszyny() {
-
     int ID;
     int MinCzas=INT16_MAX;
     for(int i =0; i<P.getMaszyny().size();i++)
