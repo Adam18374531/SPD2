@@ -14,15 +14,13 @@ class zadanie{
 private:
     int Pj;
 public:
-    zadanie(int czasP):Pj(czasP){};
-    const int getPj()const{return Pj;};
+    zadanie(int czasP) : Pj(czasP){};
+    const int getPj() const { return Pj; };
 
     bool operator==(const zadanie &z) const {
         return (Pj == z.Pj);
     }
 };
-
-
 
 
 class maszyna{
@@ -31,14 +29,14 @@ private:
     int ID; //od 0
     int sumaCzasuZadan=0;
 public:
-    int getSumaCzasuZadan(){return sumaCzasuZadan;};
-    maszyna(int id):ID(id){};
+    int getSumaCzasuZadan() const { return sumaCzasuZadan; };
+    maszyna(int id) : ID(id){};
     int getID();
     std::vector<zadanie> getZadaniaWMaszynie();
-    const bool isEmpty() { return zadaniaWMaszynie.empty(); };
-    void dodajZadanie(zadanie zad){zadaniaWMaszynie.push_back(zad);
-                                    sumaCzasuZadan+=zad.getPj();};
-    void usunZadanie(int ID){zadaniaWMaszynie.erase(zadaniaWMaszynie.begin() + ID);};
+    const bool isEmpty() const { return zadaniaWMaszynie.empty(); };
+    void dodajZadanie(zadanie zad){ zadaniaWMaszynie.push_back(zad);
+                                    sumaCzasuZadan+=zad.getPj(); };
+    void usunZadanie(int ID){ zadaniaWMaszynie.erase(zadaniaWMaszynie.begin() + ID); };
 };
 
 
@@ -50,20 +48,20 @@ class problem{
     int liczbaMaszyn;
 public:
     problem(std::vector<zadanie> zWP, int lM );
-    const std::vector<zadanie> getProblem() { return zadaniaWProblemie; };
-    const int getLiczbaZadan(){ return zadaniaWProblemie.size(); };
-    const bool isEmpty(){ return zadaniaWProblemie.empty() or maszyny.empty(); };//czy vector niepusty
+    const int getLiczbaZadan() const { return zadaniaWProblemie.size(); };
+    const bool isEmpty() const { return zadaniaWProblemie.empty() or maszyny.empty(); };//czy vector niepusty
 
     void addMaszyna(maszyna m) { maszyny.push_back(m); };
-    const int getIDMaszyny(maszyna j){return j.getID();};
+    const int getIDMaszyny(maszyna j) const { return j.getID(); };
 
-    maszyna getMaszyna(int ID){return maszyny.at(ID);};
-    std::vector<maszyna> getMaszyny(){return maszyny;};
-    int getLiczbaMaszyn(){return liczbaMaszyn;};
-    const std::vector<zadanie> getzadaniaWProblemie() const {return zadaniaWProblemie;};
-    void setPoczatkowaLiczbaZadan(int lZadan){liczbaZadan = lZadan;};
-    const int getPoczatkowaLiczbaZadan(){ return liczbaZadan; };
+    maszyna getMaszyna(int ID) const { return maszyny.at(ID); };
+    std::vector<maszyna> getMaszyny() const { return maszyny; };
+    int getLiczbaMaszyn() const { return liczbaMaszyn; };
+    const std::vector<zadanie> getzadaniaWProblemie() const { return zadaniaWProblemie; };
+    void setPoczatkowaLiczbaZadan(int lZadan){ liczbaZadan = lZadan; };
+    const int getPoczatkowaLiczbaZadan() const { return liczbaZadan; };
 
+    int getSumaPj();
     void sort_pj();
 };
 
@@ -84,7 +82,7 @@ public:
     
     void algorytmLSA();
     void algorytmLPT();
-
+    void programowanieDynamiczne_P2_Cmax();
 };
 
 

@@ -10,8 +10,5 @@ int main() {
 
     std::cout<<"Rozwiazanie LPT: "<<r.getKryterium()<<std::endl;
 
-
-
-
     return 0;
 }
