@@ -89,12 +89,12 @@ void rozwiazanie::algorytmLSA()
 {
     for (int i = 0; i < P.getLiczbaZadan(); i++)
     {
-        int idMaszyny = getIDWolnejMaszyny();               // znajdź najbardziej wolną maszynę
-        zadanie zad = P.getZadanie(i);                      // weź zadanie w oryginalnej kolejności
-        P.getMaszyny().at(idMaszyny).dodajZadanie(zad);     // dodaj zadanie do tej maszyny
+        int idMaszyny = getIDWolnejMaszyny();
+        zadanie zad = P.getZadanie(i);
+        P.getMaszyny().at(idMaszyny).dodajZadanie(zad);
     }
 
-    countCzasWykonania(P.getMaszyny());                     // oblicz kryterium (Cmax)
+    countCzasWykonania(P.getMaszyny());
 }
 
 //void rozwiazanie::programowanieDynamiczne_P2_Cmax(){
