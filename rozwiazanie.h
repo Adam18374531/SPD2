@@ -52,7 +52,7 @@ public:
     const int getPoczatkowaLiczbaZadan() const { return liczbaZadan; };
     int getLiczbaMaszyn() const {return liczbaMaszyn;};
     const std::vector<zadanie> getzadaniaWProblemie() const {return zadaniaWProblemie;};
-    std::vector<maszyna>& getMaszyny() const { return maszyny; };
+    std::vector<maszyna>& getMaszyny() { return maszyny; };
     zadanie getZadanie(int ID){return zadaniaWProblemie.at(ID);};
     maszyna& getMaszyna(int ID) { return maszyny.at(ID); };
     const int getIDMaszyny(maszyna j){return j.getID();};

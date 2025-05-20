@@ -105,9 +105,11 @@ void rozwiazanie::programowanieDynamiczne_P2_Cmax(){
        T[i][0] = 1;
    }
 
-   for(int j=1; j <= n; j++)
+   for(int j=1; j <= n; j++){
+       int pj = P.getZadanie(j-1).getPj();
        for(int k=1; k < Kl; k++)
            T[j][k] = (T[j-1][k]==1) || ( k >= pj && T[j-1][k-pj]==1 );
+   }
 
     int maxK = 0;
     for(int k = Kl-1; k >= 0; k--){
@@ -116,5 +118,5 @@ void rozwiazanie::programowanieDynamiczne_P2_Cmax(){
             break;
         }
     }
-    kryterium = std::max(maxK, getSumaPj() - maxK);
+    kryterium = std::max(maxK, P.getSumaPj() - maxK);
 }
