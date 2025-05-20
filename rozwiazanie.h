@@ -56,20 +56,27 @@ class problem{
     std::vector<zadanie> zadaniaWProblemie;
     int liczbaZadan;
     int liczbaMaszyn;
+
 public:
+
+
+
+    problem(){};
     problem(std::vector<zadanie> zWP, int lM );
     const std::vector<zadanie> getProblem() { return zadaniaWProblemie; };
     const int getLiczbaZadan(){ return zadaniaWProblemie.size(); };
     const bool isEmpty(){ return zadaniaWProblemie.empty() or maszyny.empty(); };//czy vector niepusty
-
+    void addZadanie(zadanie zad){zadaniaWProblemie.push_back(zad);};
     void addMaszyna(maszyna m) { maszyny.push_back(m); };
     const int getIDMaszyny(maszyna j){return j.getID();};
-
-    maszyna getMaszyna(int ID){return maszyny.at(ID);};
-    std::vector<maszyna> getMaszyny(){return maszyny;};
+    zadanie getZadanie(int ID){return zadaniaWProblemie.at(ID);};
+    maszyna& getMaszyna(int ID) { return maszyny.at(ID); };
+    std::vector<maszyna>& getMaszyny() { return maszyny; };
+    int getSumaPj();
     int getLiczbaMaszyn(){return liczbaMaszyn;};
     const std::vector<zadanie> getzadaniaWProblemie() const {return zadaniaWProblemie;};
     void setPoczatkowaLiczbaZadan(int lZadan){liczbaZadan = lZadan;};
+    void setLiczbaMaszyn(int lMaszyn);
     const int getPoczatkowaLiczbaZadan(){ return liczbaZadan; };
 
     void sort_pj();
@@ -85,6 +92,7 @@ private:
 public:
     rozwiazanie(problem p):P(p){};
     int getKryterium(){return kryterium;};
+    void programowanieDynamiczne_P2_Cmax();
     void setKryterium(int kryt){kryterium = kryt;};
     int countCzasWykonania(std::vector<maszyna> m);  //porownuje maszyny mozna to rozdzielic na 2 funkcje
     void addToKryterium(int czas){kryterium += czas;}

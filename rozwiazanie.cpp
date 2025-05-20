@@ -19,6 +19,22 @@ void problem::sort_pj() {
         return a.getPj() < b.getPj();
     });
 }
+void problem::setLiczbaMaszyn(int lMaszyn) {
+    liczbaMaszyn=lMaszyn;
+    for(int i =0; i<lMaszyn;i++)
+    {
+        maszyna m(i);
+        addMaszyna(m);
+    }
+}
+
+int problem::getSumaPj(){
+    int suma = 0;
+    for(int i=0; i < getLiczbaZadan(); i++){
+        suma += zadaniaWProblemie.at(i).getPj();
+    }
+    return suma;
+}
 
 
 int rozwiazanie::countCzasWykonania(std::vector<maszyna> m){
@@ -36,6 +52,8 @@ int rozwiazanie::countCzasWykonania(std::vector<maszyna> m){
     return kryterium;
 }
 
+
+
 int rozwiazanie::getIDWolnejMaszyny() {
 
     int ID;
@@ -52,40 +70,48 @@ int rozwiazanie::getIDWolnejMaszyny() {
     return ID;
 }
 
+
 void rozwiazanie::algorytmLPT()
 {
     P.sort_pj();
-    for(int i = 0; i <P.getLiczbaZadan(); i++)
+
+    for (int i = 0; i < P.getLiczbaZadan(); i++)
     {
-        // znajdź wolną maszyne i prezypisz jej maszynę, ktora ???!
-        //P.getMaszyny().at(getIDWolnejMaszyny()) = P.getMaszyna(i%P.getLiczbaMaszyn());
-
-
-        P.getMaszyny().at(getIDWolnejMaszyny()).dodajZadanie(P.getProblem().at(i));
+        int idMaszyny = getIDWolnejMaszyny();
+        zadanie zad = P.getProblem().at(i);
+        P.getMaszyny().at(idMaszyny).dodajZadanie(zad);
     }
 
     countCzasWykonania(P.getMaszyny());
-
 }
 
-
-
-
-/*
 void rozwiazanie::algorytmLSA()
 {
-
-    for(int i = 0; i <liczbaZadan; i++)
+    for (int i = 0; i < P.getLiczbaZadan(); i++)
     {
-        if(sumaPJ >= czas)
-            masz = getMaszyna(i%liczbaMaszyn);
-            masz.dodajZadanie(zadanieWProblemie.at(i);
-        czas++;
+        int idMaszyny = getIDWolnejMaszyny();               // znajdź najbardziej wolną maszynę
+        zadanie zad = P.getZadanie(i);                      // weź zadanie w oryginalnej kolejności
+        P.getMaszyny().at(idMaszyny).dodajZadanie(zad);     // dodaj zadanie do tej maszyny
     }
 
-    countKryterium();
-
+    countCzasWykonania(P.getMaszyny());                     // oblicz kryterium (Cmax)
 }
 
-
-*/
+//void rozwiazanie::programowanieDynamiczne_P2_Cmax(){
+//    int Kl = P.getSumaPj()/2 +1;
+//    int n = P.getLiczbaZadan();
+//
+//    int T[n+1][Kl] = {};
+//
+//    // kolumna 0 = zadanie 0 o zerowym czasie wykonywania
+//    for(int i=0; i <= n; i++){
+//        T[i][0] = 1;
+//    }
+//
+//    for(int j=1; j <= n; j++)
+//        for(int k=1; k < Kl; k++)
+//            if( (T[j-1][k]==1) || (( k >= pj )&&( T[j-1][k-pj]==1 )) )
+//                T[j][k]=1;
+//
+//    // tu trzeba zrobić odszyfrowywanie
+//}
