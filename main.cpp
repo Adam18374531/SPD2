@@ -27,8 +27,5 @@ int main() {
 //    r.algorytmLSA();
     std::cout<<"Rozwiazanie: "<<r.getKryterium()<<std::endl;
 
-
-
-
     return 0;
 }
