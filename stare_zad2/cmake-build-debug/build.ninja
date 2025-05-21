@@ -61,6 +61,12 @@ build CMakeFiles/SPD2.dir/rozwiazanie.cpp.obj: CXX_COMPILER__SPD2_Debug C$:/User
   OBJECT_DIR = CMakeFiles\SPD2.dir
   OBJECT_FILE_DIR = CMakeFiles\SPD2.dir
 
+build CMakeFiles/SPD2.dir/wczyt.cpp.obj: CXX_COMPILER__SPD2_Debug C$:/Users/adam9/OneDrive/Pulpit/Studia/6$ Semestr/SPD/Zad2/SPD2/wczyt.cpp || cmake_object_order_depends_target_SPD2
+  DEP_FILE = CMakeFiles\SPD2.dir\wczyt.cpp.obj.d
+  FLAGS = -g -std=gnu++1z
+  OBJECT_DIR = CMakeFiles\SPD2.dir
+  OBJECT_FILE_DIR = CMakeFiles\SPD2.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SPD2
@@ -69,7 +75,7 @@ build CMakeFiles/SPD2.dir/rozwiazanie.cpp.obj: CXX_COMPILER__SPD2_Debug C$:/User
 #############################################
 # Link the executable SPD2.exe
 
-build SPD2.exe: CXX_EXECUTABLE_LINKER__SPD2_Debug CMakeFiles/SPD2.dir/main.cpp.obj CMakeFiles/SPD2.dir/rozwiazanie.cpp.obj
+build SPD2.exe: CXX_EXECUTABLE_LINKER__SPD2_Debug CMakeFiles/SPD2.dir/main.cpp.obj CMakeFiles/SPD2.dir/rozwiazanie.cpp.obj CMakeFiles/SPD2.dir/wczyt.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\SPD2.dir

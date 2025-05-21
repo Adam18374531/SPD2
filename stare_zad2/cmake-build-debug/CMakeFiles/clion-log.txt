@@ -1,0 +1,1 @@
+CMakeLists.txt not found in C:\Users\adam9\OneDrive\Pulpit\Studia\6 Semestr\SPD\Zad2\SPD2 Select CMakeLists.txt

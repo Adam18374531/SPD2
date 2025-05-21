@@ -3,14 +3,15 @@
 
 bool wczytywanie(const std::string & nazwaPliku, problem &prob, int LiczbaM)
 {
+
     std::ifstream plik(nazwaPliku);
+
 
     if(!plik) {
         std::cout << "Nieprawidlowy plik" << std::endl;
         std::cout << "Aktualny katalog: " << system("cd") << std::endl;
         return 0;
     }
-
     int lZadan;
     plik >> lZadan;
     prob.setPoczatkowaLiczbaZadan(lZadan);
@@ -23,6 +24,7 @@ bool wczytywanie(const std::string & nazwaPliku, problem &prob, int LiczbaM)
             zadanie zad(pj);
             prob.addZadanie(zad);
         }
+
     }
 
     plik.close();

@@ -1,6 +1,7 @@
 //
 // Created by adam9 on 23.04.2025.
 //
+
 #ifndef SPD2_ROZWIAZANIE_H
 #define SPD2_ROZWIAZANIE_H
 #include <iostream>
@@ -19,7 +20,13 @@ public:
     bool operator==(const zadanie &z) const {
         return (Pj == z.Pj);
     }
+
+
+
+
 };
+
+
 
 
 class maszyna{
@@ -36,7 +43,12 @@ public:
     void dodajZadanie(zadanie zad){zadaniaWMaszynie.push_back(zad);
                                     sumaCzasuZadan+=zad.getPj();};
     void usunZadanie(int ID){zadaniaWMaszynie.erase(zadaniaWMaszynie.begin() + ID);};
+
+
+
+
 };
+
 
 
 class problem{
@@ -46,27 +58,30 @@ class problem{
     int liczbaMaszyn;
 
 public:
+
+
+
     problem(){};
     problem(std::vector<zadanie> zWP, int lM );
-    const int getLiczbaZadan() const { return zadaniaWProblemie.size(); };
-    const int getPoczatkowaLiczbaZadan() const { return liczbaZadan; };
-    int getLiczbaMaszyn() const {return liczbaMaszyn;};
-    const std::vector<zadanie> getzadaniaWProblemie() const {return zadaniaWProblemie;};
-    std::vector<maszyna>& getMaszyny() { return maszyny; };
-    zadanie getZadanie(int ID){return zadaniaWProblemie.at(ID);};
-    maszyna& getMaszyna(int ID) { return maszyny.at(ID); };
-    const int getIDMaszyny(maszyna j){return j.getID();};
-    int getSumaPj();
-
+    const std::vector<zadanie> getProblem() { return zadaniaWProblemie; };
+    const int getLiczbaZadan(){ return zadaniaWProblemie.size(); };
     const bool isEmpty(){ return zadaniaWProblemie.empty() or maszyny.empty(); };//czy vector niepusty
     void addZadanie(zadanie zad){zadaniaWProblemie.push_back(zad);};
     void addMaszyna(maszyna m) { maszyny.push_back(m); };
+    const int getIDMaszyny(maszyna j){return j.getID();};
+    zadanie getZadanie(int ID){return zadaniaWProblemie.at(ID);};
+    maszyna& getMaszyna(int ID) { return maszyny.at(ID); };
+    std::vector<maszyna>& getMaszyny() { return maszyny; };
+    int getSumaPj();
+    int getLiczbaMaszyn(){return liczbaMaszyn;};
+    const std::vector<zadanie> getzadaniaWProblemie() const {return zadaniaWProblemie;};
     void setPoczatkowaLiczbaZadan(int lZadan){liczbaZadan = lZadan;};
     void setLiczbaMaszyn(int lMaszyn);
+    const int getPoczatkowaLiczbaZadan(){ return liczbaZadan; };
 
     void sort_pj();
-};
 
+};
 
 class rozwiazanie{
 private:
@@ -83,10 +98,13 @@ public:
     void addToKryterium(int czas){kryterium += czas;}
     void addIxZadania(int IDMaszyny, int IDZadania) { rozw.push_back({IDMaszyny, IDZadania}); };
     int getIDWolnejMaszyny();
-
     void algorytmLSA();
     void algorytmLPT();
+
 };
+
+
+
 
 
 
