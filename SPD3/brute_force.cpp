@@ -1,6 +1,6 @@
-#include "brute_force.hpp"
+#include "brute_force.h"
 
-przegladZupelny::przegladZupelny(problem& p) : prob(p) {
+BruteForce::BruteForce(problem& p) : prob(p) {
     lzadan = p.getLiczbaZadan();
     if(lzadan > 12){
         std::cout<< "Przegląd zupełny dla więcej niż 12 zadań jest nieobliczalny. Pomijam." << std::endl;
@@ -23,7 +23,7 @@ przegladZupelny::przegladZupelny(problem& p) : prob(p) {
     } while (std::next_permutation(IDzadan.begin(), IDzadan.end()));
 }
 
-int przegladZupelny::countCmax(std::vector<int> kolejnoscZadan) {
+int BruteForce::countCmax(std::vector<int> kolejnoscZadan) {
 
     std::vector<std::vector<int>> C(kolejnoscZadan.size(), std::vector<int>(prob.getLiczbaOperacji(), 0));
 
