@@ -6,6 +6,7 @@
 #define SPD3_NEH_H
 
 #include <vector>
+#include "problem.h"
 /*
  * Rozpoczyna on działanie od pewnego rozwiązania początkowego π_init, które określa kolejność zadań.
  * W wersji dla klasycznego problemu zadania są uszeregowane zgodnie z niemalejącą sumą czasów wykonywania operacji.
@@ -46,12 +47,18 @@
 
  */
 class NEH {
-    int liczba_zadan;
-    int liczba_maszyn;
+
     int sumapj;
     int Cmax;
+    problem &prob;
     //std::vector<std::vector<int>> p(liczba_zadan, std::vector<int>(liczba_maszyn));
     std::vector<int>harmonogram; //kolejnosc zadan
+public:
+    NEH(problem &prob);
+    int countCMax(std::vector<int> & harmonogram);
+    std::vector<int> Alg_NEH();
+
 };
+
 
 #endif //SPD3_NEH_H

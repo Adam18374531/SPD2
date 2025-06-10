@@ -3,4 +3,4 @@ project(SPD3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(SPD3 main.cpp Johnson.cpp Johnson.h NEH.cpp NEH.h)
+add_executable(SPD3 main.cpp Johnson.cpp Johnson.h NEH.cpp NEH.h wczytywanie.cpp wczytywanie.h problem.cpp problem.h)
