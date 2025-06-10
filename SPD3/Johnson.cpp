@@ -10,7 +10,7 @@ Johnson::Johnson(problem& p) : prob(p) {
         return;
     }
     
-    najlepszaKolejnosc.resize(prob.getLiczbaOperacji(), 0);
+    najlepszaKolejnosc.resize(prob.getLiczbaZadan(), 0);
 
     std::vector<struct operacja> wszystkieOperacje;
     for(int zad=0; zad < prob.getLiczbaZadan(); zad++){
