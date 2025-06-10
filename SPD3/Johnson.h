@@ -30,7 +30,7 @@ class Johnson {
 
     bool jestZrobione(int zad, std::vector<int> zrobione){
         for(int i = 0; i< zrobione.size(); i++) 
-            if(zad == i) return true;
+            if(zad == zrobione.at(i)) return true;
         
         return false;
     };
