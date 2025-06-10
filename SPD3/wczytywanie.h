@@ -7,10 +7,8 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
-#include "NEH.h"
+#include "problem.h"
 
-    bool wczytywanie(const std::string &nazwaPliku, problem &prob);
-
-
+bool wczytywanie(const std::string &nazwaPliku, problem &prob);
 
 #endif //SPD3_WCZYTYWANIE_H
