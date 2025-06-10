@@ -22,11 +22,13 @@ int main() {
     NEH neh(prob);
     przegladZupelny PrzegZup(prob);
     std::vector<int> NEHwynik = neh.Alg_NEH();
-    std::vector<int> PrzegZupwynik = PrzegZup.getNajlepszaKolejnosc();
 
-    std::cout << "Przegląd zupełny:\nKolejność zadań: ";
-    for (int z : PrzegZupwynik) std::cout << z << " ";
-    std::cout << "\nCmax: " << PrzegZup.getCmax() << "\n";
+    if(prob.getLiczbaZadan()<13){
+        std::vector<int> PrzegZupwynik = PrzegZup.getNajlepszaKolejnosc();
+        std::cout << "Przegląd zupełny:\nKolejność zadań: ";
+        for (int z : PrzegZupwynik) std::cout << z << " ";
+        std::cout << "\nCmax: " << PrzegZup.getCmax() << "\n";
+    }
 
     std::cout << "NEH:\nKolejność zadań: ";
     for (int z : NEHwynik) std::cout << z << " ";
