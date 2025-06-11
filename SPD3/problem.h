@@ -12,16 +12,13 @@
 class problem {
     std::vector<std::vector<int>> dane;
     int liczba_zadan;
-    int liczba_maszyn;
     int liczba_operacji;
 
 public:
     int getLiczbaZadan() const;
-    int getLiczbaMaszyn() const;
     int getLiczbaOperacji() const;
 
     void setLiczbaZadan(int liczbaZadan) { liczba_zadan = liczbaZadan; };
-    void setLiczbaMaszyn(int liczbaMaszyn) { liczba_maszyn = liczbaMaszyn; };
     void setLiczbaOperacji(int liczbaOperacji) { liczba_operacji = liczbaOperacji; };
     void setdane(int lz, int lo, int czas){ dane[lz][lo] = czas; };
 

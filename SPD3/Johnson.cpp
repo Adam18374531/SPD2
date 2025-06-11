@@ -5,34 +5,39 @@
 #include "Johnson.h"
 
 Johnson::Johnson(problem& p) : prob(p) {
-    if(prob.getLiczbaMaszyn() != 2){
+    if(prob.getLiczbaOperacji() != 2){
         std::cout<<"Algorytm Johnsona działa optymalnie dla dwóch maszyn. Inne konfiguracje nie zostały uwzględnione." << std::endl;
         return;
     }
-    
-    najlepszaKolejnosc.resize(prob.getLiczbaZadan(), 0);
-
     std::vector<struct operacja> wszystkieOperacje;
     for(int zad=0; zad < prob.getLiczbaZadan(); zad++){
-        for(int m=0; m < prob.getLiczbaMaszyn(); m++){
-            wszystkieOperacje.push_back( {prob.getDane().at(zad).at(m), zad, m} );
+        for(int m=0; m < prob.getLiczbaOperacji(); m++){
+            wszystkieOperacje.push_back( {prob.getDane()[zad][m], zad, m} );
         }
     }
     // Sort vector in ascending order
     sort_pj(wszystkieOperacje);
 
-    int lewy_ix = 0;
-    int prawy_ix = prob.getLiczbaZadan()-1;
+    std::vector<int> od_poczatku;
+    std::vector<int> od_konca;
+
     std::vector<int> zrobioneZadania;
 
     for(auto operacja : wszystkieOperacje){
-
         if( !jestZrobione(operacja.IDzadania, zrobioneZadania) ){
             zrobioneZadania.push_back(operacja.IDzadania);
 
-            operacja.IDmaszyny==0 ? najlepszaKolejnosc[lewy_ix++] = operacja.IDzadania : najlepszaKolejnosc[prawy_ix--] = operacja.IDzadania;
+            std::cout << operacja.IDzadania<< ": " <<operacja.IDmaszyny<<": "<< operacja.czas_wykonania<<std::endl;
+
+            operacja.IDmaszyny==0 ? od_poczatku.push_back(operacja.IDzadania) : od_konca.push_back(operacja.IDzadania);
         }
     }
+
+    sort_pj(od_poczatku);
+    sort_pj(od_konca);
+
+    najlepszaKolejnosc.insert(std::end(najlepszaKolejnosc), std::begin(od_poczatku), std::end(od_poczatku));
+    najlepszaKolejnosc.insert(std::end(najlepszaKolejnosc), std::begin(od_konca), std::end(od_konca));
 
     Cmax = countCmax(najlepszaKolejnosc);
 }
@@ -59,5 +64,5 @@ int Johnson::countCmax(std::vector<int> kolejnoscZadan) {
         }
     }
 
-    return C.back().back();    
+    return C.back().back();
 }

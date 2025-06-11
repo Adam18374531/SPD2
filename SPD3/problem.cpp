@@ -11,10 +11,6 @@ int problem::getLiczbaZadan() const {
     return liczba_zadan;
 }
 
-int problem::getLiczbaMaszyn() const {
-    return liczba_maszyn;
-}
-
 int problem::getLiczbaOperacji() const {
     return liczba_operacji;
 }

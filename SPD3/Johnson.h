@@ -22,16 +22,22 @@ class Johnson {
 
     int countCmax(std::vector<int>);
 
-    void sort_pj(std::vector<struct operacja> wszystkieOperacje) {
+    void sort_pj(std::vector<struct operacja>& wszystkieOperacje) {
         std::sort(wszystkieOperacje.begin(), wszystkieOperacje.end(), [](const struct operacja& a, const struct operacja& b) {
             return a.czas_wykonania < b.czas_wykonania;
         });
     };
 
+    void sort_pj(std::vector<int>& wszystkieOperacje) {
+        std::sort(wszystkieOperacje.begin(), wszystkieOperacje.end(), [](const int& a, const int& b) {
+            return a < b;
+        });
+    };
+
     bool jestZrobione(int zad, std::vector<int> zrobione){
-        for(int i = 0; i< zrobione.size(); i++) 
+        for(int i = 0; i< zrobione.size(); i++)
             if(zad == zrobione.at(i)) return true;
-        
+
         return false;
     };
 
